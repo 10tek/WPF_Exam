@@ -4,6 +4,7 @@
     using System.Collections.Generic;
 
     using System.Globalization;
+    using System.Net;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
 
@@ -24,6 +25,15 @@
 
     public partial class StarWarsHero
     {
+        public void SetHomeworld()
+        {
+            using (WebClient client = new WebClient())
+            {
+                var json = client.DownloadString(Homeworld.ToString());
+                HomeworldName = JsonConvert.DeserializeObject<Homeworld>(json);
+            }
+        }
+
         [JsonProperty("name")]
         public string Name { get; set; }
 
@@ -51,6 +61,8 @@
         [JsonProperty("homeworld")]
         public Uri Homeworld { get; set; }
 
+        public Homeworld HomeworldName { get; set; }
+
         [JsonProperty("films")]
         public List<Uri> Films { get; set; }
 
@@ -71,5 +83,11 @@
 
         [JsonProperty("url")]
         public Uri Url { get; set; }
+    }
+
+    public partial class Homeworld
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
     }
 }

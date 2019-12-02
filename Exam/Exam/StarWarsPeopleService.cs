@@ -15,7 +15,12 @@ namespace Exam
             using (WebClient client = new WebClient())
             {
                 var json = client.DownloadString(url + pageNumber);
-                return JsonConvert.DeserializeObject<HeroesList > (json);
+                var heroesList = JsonConvert.DeserializeObject<HeroesList> (json);
+                foreach(var hero in heroesList.Heroes)
+                {
+                    hero.SetHomeworld();
+                }
+                return heroesList;
             }
         }
     }

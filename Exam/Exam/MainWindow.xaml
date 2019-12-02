@@ -27,7 +27,7 @@
                 <DataGridTextColumn Binding="{Binding EyeColor}" Header="Eye color" Width="100"/>
                 <DataGridTextColumn Binding="{Binding BirthYear}" Header="Birth color" Width="100"/>
                 <DataGridTextColumn Binding="{Binding Gender}" Header="Gender" Width="100"/>
-                <DataGridTextColumn Binding="{Binding Homeworld}" Header="Homeworld" Width="100"/>
+                <DataGridTextColumn Binding="{Binding HomeworldName.Name}" Header="Homeworld" Width="100"/>
                 <DataGridTextColumn Binding="{Binding Created.Date}" Header="Created" Width="180"/>
                 <DataGridTextColumn Binding="{Binding Edited.Date}" Header="Edited" Width="180"/>
             </DataGrid.Columns>
